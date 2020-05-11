@@ -20,8 +20,8 @@ ext {
 
     iliModelLandUsePlans = "SO_Nutzungsplanung_20171118"
     dbSchemaLandUsePlans = "arp_npl"
-    landUsePlansDataSets = ["2401", "2403", "2405", "2407", "2408", "2456", "2457", "2473", "2474", "2475", "2476", "2479",  "2491", "2498", "2501", "2502", "2514", "2551", "2573", "2580", "2613", "2614", "2615", "2616"]
-    //landUsePlansDataSets = ["2502"]
+    //landUsePlansDataSets = ["2401", "2403", "2405", "2407", "2408", "2456", "2457", "2473", "2474", "2475", "2476", "2479",  "2491", "2498", "2501", "2502", "2514", "2551", "2573", "2580", "2613", "2614", "2615", "2616"]
+    landUsePlansDataSets = ["2491","2498"]
     landUsePlansBaseUrl = "https://geo.so.ch/geodata/ch.so.arp.nutzungsplanung/"
     
     iliModelGroundwaterProtection = "PlanerischerGewaesserschutz_LV95_V1_1"
