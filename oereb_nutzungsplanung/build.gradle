@@ -112,7 +112,8 @@ task deleteFromOereb(type: SqlExecutor) {
 task transferData(type: SqlExecutor, dependsOn: ["importFederalLegalBasisToOereb", "importCantonalLegalBasisToOereb", "importResponsibleOfficesToOereb"]) {
     description = "Führt den Datenumbau in das Transferschema durch."
     database = [dbUriEdit, dbUserEdit, dbPwdEdit]
-    sqlFiles = ["insert_oereb_landuseplans_tables.sql"]
+    //sqlFiles = ["insert_oereb_landuseplans_tables.sql"]
+    sqlFiles = ["insert_oereb_landuseplans_tables_gemeindeweise.sql"]
 }
 
 wmsLayerList.each { wmsLayer ->
@@ -139,13 +140,14 @@ task updateSymbols(dependsOn: "transferData") {
     }
 }
 
-task exportData(type: Ili2pgExport, dependsOn: "updateSymbols") {
+//task exportData(type: Ili2pgExport, dependsOn: "updateSymbols") {
+task exportData(type: Ili2pgExport) {
     description = "Exportiert die umgebauten Daten aus dem Transferschema in ein INTERLIS-Datei."
     database = [dbUriEdit, dbUserEdit, dbPwdEdit]
     models = iliModelTransferstruktur
     dbschema = dbSchemaLandUsePlansOereb
     dataFile = "$rootDir/" + xtfFileName
-    dataset = landUsePlansDataSet
+    dataset = "ch.so.arp.nutzungsplanung;2491"
     disableValidation = true
 }
 
